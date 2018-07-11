@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
         passwordInput = (EditText) findViewById(R.id.etPassword);
         loginBtn = (Button) findViewById(R.id.btLogin);
 
+        userNameInput.setText("knturibi");
+        passwordInput.setText("password123");
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

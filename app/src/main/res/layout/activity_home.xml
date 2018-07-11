@@ -7,14 +7,13 @@
     tools:context=".HomeActivity">
 
 
-
     <EditText
         android:id="@+id/etDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="212dp"
+        android:layout_marginBottom="202dp"
         android:hint="Enter a description" />
 
     <Button
@@ -22,9 +21,8 @@
         android:layout_width="334dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="149dp"
-        android:layout_marginStart="26dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="110dp"
         android:text="CREATE" />
 
     <Button
@@ -33,8 +31,36 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="78dp"
+        android:layout_marginBottom="44dp"
         android:text="REFRESH" />
+
+    <ImageView
+        android:id="@+id/ivPicture"
+        android:layout_width="302dp"
+        android:layout_height="254dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/btCreate"
+        android:layout_marginTop="11dp"
+        app:srcCompat="@android:color/black" />
+
+    <Button
+        android:id="@+id/ivCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etDescription"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="88dp"
+        android:onClick="onClickCamera"
+        android:text="Camera" />
+
+    <Button
+        android:id="@+id/btGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etDescription"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="112dp"
+        android:text="Gallery" />
 
 
 </RelativeLayout>
