@@ -22,25 +22,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="110dp"
+        android:layout_marginBottom="140dp"
         android:text="CREATE" />
 
     <Button
         android:id="@+id/btRefresh"
         android:layout_width="334dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/btCreate"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="44dp"
+        android:layout_marginTop="-140dp"
         android:text="REFRESH" />
 
     <ImageView
         android:id="@+id/ivPicture"
         android:layout_width="302dp"
         android:layout_height="254dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/btCreate"
-        android:layout_marginTop="11dp"
+        android:layout_above="@+id/ivCamera"
+        android:layout_centerHorizontal="true"
         app:srcCompat="@android:color/black" />
 
     <Button
@@ -61,6 +60,18 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="112dp"
         android:text="Gallery" />
+    <FrameLayout
+        android:id="@+id/fragment_palcehoder"
+        android:layout_width="200dp"
+        android:layout_height="50dp">
+    </FrameLayout>
 
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu_bottom_navigation" />
 
 </RelativeLayout>
