@@ -33,11 +33,10 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 final String username = userNameInput.getText().toString();
                 final String password = passwordInput.getText().toString();
                 login(username, password);
-
-
             }
         });
     }
