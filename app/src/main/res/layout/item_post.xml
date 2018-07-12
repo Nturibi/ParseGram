@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_marginTop="7dp"
+    android:layout_height="wrap_content">
+
+
+    <com.parse.ParseImageView
+        android:id="@+id/ivPostPic"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@android:color/background_dark" />
+
+    <ImageView
+        android:id="@+id/ivLike"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/ivPostPic"
+        android:layout_marginEnd="-54dp"
+        android:layout_toStartOf="@+id/ivComment"
+        app:srcCompat="@drawable/ic_heart_outline_24dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivComment"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ivPostPic"
+        android:layout_marginStart="54dp"
+        app:srcCompat="@drawable/ufi_comment" />
+
+    <ImageView
+        android:id="@+id/ivDirectMessage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+
+        android:layout_below="@+id/ivPostPic"
+        android:layout_toEndOf="@+id/ivComment"
+        app:srcCompat="@drawable/direct" />
+
+    <ImageView
+        android:id="@+id/ivBookmark"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+
+        android:layout_above="@+id/tvNumLikes"
+        android:layout_alignEnd="@+id/ivPostPic"
+        android:layout_marginBottom="-5dp"
+        app:srcCompat="@drawable/ic_bookmark_outline_black_24dp" />
+
+    <TextView
+        android:id="@+id/tvNumLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ivLike"
+        android:layout_marginStart="31dp"
+        android:text="NumLikes" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvNumLikes"
+        android:layout_below="@+id/tvNumLikes"
+        android:text="Description" />
+
+    <com.parse.ParseImageView
+        android:id="@+id/ivProfPic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/tvNumLikes"
+        app:srcCompat="@drawable/ic_instagram_profile" />
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivProfPic"
+        android:layout_toEndOf="@+id/ivProfPic"
+        android:text="username" />
+</RelativeLayout>

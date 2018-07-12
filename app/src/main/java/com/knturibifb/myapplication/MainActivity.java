@@ -1,16 +1,10 @@
 package com.knturibifb.myapplication;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.parse.LogInCallback;
-import com.parse.ParseException;
-import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
     private EditText userNameInput;
@@ -23,40 +17,49 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        userNameInput = (EditText) findViewById(R.id.etUsername);
-        passwordInput = (EditText) findViewById(R.id.etPassword);
-        loginBtn = (Button) findViewById(R.id.btLogin);
+        // Begin the transaction
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        // Replace the contents of the container with the new fragment
+        ft.replace(R.id.main_fragment_holder, new LoginFragment());
+        // or ft.add(R.id.your_placeholder, new FooFragment());
+        // Complete the changes added above
+        ft.commit();
 
-        userNameInput.setText("knturibi");
-        passwordInput.setText("password123");
-
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                final String username = userNameInput.getText().toString();
-                final String password = passwordInput.getText().toString();
-                login(username, password);
-            }
-        });
+//        userNameInput = (EditText) findViewById(R.id.etUsername);
+//        passwordInput = (EditText) findViewById(R.id.etPassword);
+//        loginBtn = (Button) findViewById(R.id.btLogin);
+//
+//        userNameInput.setText("knturibi");
+//        passwordInput.setText("password123");
+//
+//        loginBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                final String username = userNameInput.getText().toString();
+//                final String password = passwordInput.getText().toString();
+//                login(username, password);
+//            }
+//        });
     }
 
-    private void login (String username, String password){
-        //TODO
-        ParseUser.logInInBackground(username, password, new LogInCallback() {
-            @Override
-            public void done(ParseUser user, ParseException e) {
-                if (e == null){   //means that user was logged in correctly
-                    Log.d("LoginActivity", "Login successful");
-                    final Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                }else{
-                    Log.d("LoginActivity", "Login Failure");
-                    e.printStackTrace();
-                }
+//    private void login (String username, String password){
+//        //TODO
+//        ParseUser.logInInBackground(username, password, new LogInCallback() {
+//            @Override
+//            public void done(ParseUser user, ParseException e) {
+//                if (e == null){   //means that user was logged in correctly
+//                    Log.d("LoginActivity", "Login successful");
+//                    final Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                }else{
+//                    Log.d("LoginActivity", "Login Failure");
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        });
+//    }
 
-            }
-        });
-    }
 }

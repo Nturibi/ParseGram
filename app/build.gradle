@@ -43,4 +43,11 @@ dependencies {
     implementation "com.android.support:design:${supportLibVersion}"
     implementation "com.android.support:recyclerview-v7:${supportLibVersion}"
 
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    //for parse file
+    implementation 'com.parse:parseui-widget-android:0.0.2'
+
+
+
+
 }

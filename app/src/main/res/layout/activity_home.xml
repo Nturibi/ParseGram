@@ -7,63 +7,11 @@
     tools:context=".HomeActivity">
 
 
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="202dp"
-        android:hint="Enter a description" />
-
-    <Button
-        android:id="@+id/btCreate"
-        android:layout_width="334dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="140dp"
-        android:text="CREATE" />
-
-    <Button
-        android:id="@+id/btRefresh"
-        android:layout_width="334dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btCreate"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-140dp"
-        android:text="REFRESH" />
-
-    <ImageView
-        android:id="@+id/ivPicture"
-        android:layout_width="302dp"
-        android:layout_height="254dp"
-        android:layout_above="@+id/ivCamera"
-        android:layout_centerHorizontal="true"
-        app:srcCompat="@android:color/black" />
-
-    <Button
-        android:id="@+id/ivCamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/etDescription"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="88dp"
-        android:onClick="onClickCamera"
-        android:text="Camera" />
-
-    <Button
-        android:id="@+id/btGallery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/etDescription"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="112dp"
-        android:text="Gallery" />
     <FrameLayout
-        android:id="@+id/fragment_palcehoder"
-        android:layout_width="200dp"
-        android:layout_height="50dp">
+        android:id="@+id/fragment_placehoder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation">
     </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView

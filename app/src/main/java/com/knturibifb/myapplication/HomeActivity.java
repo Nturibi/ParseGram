@@ -2,17 +2,19 @@ package com.knturibifb.myapplication;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -51,46 +53,84 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        filesDir = getApplicationContext().getFilesDir();
+        final FragmentManager fragmentManager = getSupportFragmentManager();
+        //fragment definitions
+        // define your fragments here
+        final Fragment homeFragment = new HomeFragment();
+        final Fragment profileFragment = new ProfileFragment();
+        final Fragment createPostFragment = new CreatePostFragment();
+        final int frameLayoutId = R.id.fragment_placehoder;
 
-        descriptionInput = (EditText) findViewById(R.id.etDescription);
-        createButton = (Button) findViewById(R.id.btCreate);
-        refreshButton = (Button) findViewById(R.id.btRefresh);
-        pictureHolder = (ImageView) findViewById(R.id.ivPicture);
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+// Replace the contents of the container with the new fragment
+        ft.replace(frameLayoutId, new HomeFragment());
+// or ft.add(R.id.your_placeholder, new FooFragment());
+// Complete the changes added above
+        ft.commit();
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+        // handle navigation selection
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        switch (item.getItemId()) {
+                            case R.id.action_home:
+                                fragmentTransaction.replace(frameLayoutId, homeFragment).commit();
+                                return true;
+                            case R.id.action_create_post:
+                                fragmentTransaction.replace(frameLayoutId, createPostFragment).commit();
+                                return true;
+                            case R.id.action_profile:
+                                fragmentTransaction.replace(frameLayoutId, profileFragment).commit();
+                                return true;
+                        }
+                        return false;
+                    }
+                });
 
-        refreshButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loadTopPosts();
-            }
-        });
+//        filesDir = getApplicationContext().getFilesDir();
+//
+//        descriptionInput = (EditText) findViewById(R.id.etDescription);
+//        createButton = (Button) findViewById(R.id.btCreate);
+//        refreshButton = (Button) findViewById(R.id.btRefresh);
+//        pictureHolder = (ImageView) findViewById(R.id.ivPicture);
+//
+//        refreshButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                loadTopPosts();
+//            }
+//        });
+//
+//        createButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                final String description = descriptionInput.getText().toString();
+//                final ParseUser user = ParseUser.getCurrentUser();
+//                if (file == null) {
+//                    System.out.println("file is null");
+//                    file = new File(imagePath);
+//                }
+//                if(isStoragePermissionGranted()){
+//
+//                  parseFile = new ParseFile(file);
+//                  createPost(description, parseFile, user);
+//                }
+//
+//            }
+//        });
 
-        createButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final String description = descriptionInput.getText().toString();
-                final ParseUser user = ParseUser.getCurrentUser();
-                if (file == null) {
-                    System.out.println("file is null");
-                    file = new File(imagePath);
-                }
-                if(isStoragePermissionGranted()){
-
-                  parseFile = new ParseFile(file);
-                  createPost(description, parseFile, user);
-                }
-
-            }
-        });
 
 
-
-        loadTopPosts();
+//        loadTopPosts();
 
     }
 
@@ -174,34 +214,37 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     /*Executed when the camera button is clicked*/
-    public void onClickCamera(View view){
-        dispatchTakePictureIntent();
-    }
+//    public void onClickCamera(View view){
+//        dispatchTakePictureIntent();
+//    }
+//
+//    /*dispatches an intent to take a picture*/
+//    private void dispatchTakePictureIntent() {
+//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+//            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+//        }
+//    }
 
-    /*dispatches an intent to take a picture*/
-    private void dispatchTakePictureIntent() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            pictureHolder.setImageBitmap(imageBitmap);
-            file = persistImage(imageBitmap, "pic1");
-            System.out.println("finished activity result");
-
-            if(isStoragePermissionGranted()){
-                parseFile = new ParseFile(file);
-                createPost("wooow", parseFile,ParseUser.getCurrentUser() );
-            }
-
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode,resultCode,data);
+////        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+////            Bundle extras = data.getExtras();
+////            Bitmap imageBitmap = (Bitmap) extras.get("data");
+////            pictureHolder.setImageBitmap(imageBitmap);
+////            file = persistImage(imageBitmap, "pic1");
+////            System.out.println("finished activity result");
+////
+////            if(isStoragePermissionGranted()){
+////                parseFile = new ParseFile(file);
+////                createPost("wooow", parseFile,ParseUser.getCurrentUser() );
+////            }
+////
+////        }
+////        Fragment fragment = new CreatePostFragment();
+////        fragment.onActivityResult(requestCode, resultCode, data);
+//    }
 
 
     private static File  persistImage(Bitmap bitmap, String name) {
