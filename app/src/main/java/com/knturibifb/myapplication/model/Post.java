@@ -6,11 +6,14 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
+
 @ParseClassName("Post")
 public class Post extends ParseObject {
     private static  final String KEY_DESCRIPTION = "description";
     private static  final String KEY_IMAGE = "image";
     private static  final String KEY_USER = "user";
+    private static  final String KEY_LIKES = "likes";
+    private int numLikes = 0;
 
 
     public  String getDescription(){
@@ -36,6 +39,13 @@ public class Post extends ParseObject {
         put(KEY_USER, parseUser);
 
     }
+
+    public void likePost(){numLikes++; put(KEY_LIKES,numLikes);}
+
+    public  String getNumLikes(){
+        return Integer.toString(numLikes);
+    }
+
     public static class Query extends ParseQuery<Post>{
         public Query() {
             super(Post.class);

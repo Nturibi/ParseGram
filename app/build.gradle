@@ -46,8 +46,9 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     //for parse file
     implementation 'com.parse:parseui-widget-android:0.0.2'
-
-
+    //parcel
+    implementation 'org.parceler:parceler-api:1.1.6'
+    annotationProcessor 'org.parceler:parceler:1.1.6'
 
 
 }

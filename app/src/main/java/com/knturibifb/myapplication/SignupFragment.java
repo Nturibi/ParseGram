@@ -39,9 +39,10 @@ public class SignupFragment extends Fragment {
                 // Create the ParseUser
                 ParseUser user = new ParseUser();
                 // Set core properties
-                user.setUsername(email.getText().toString());
+                user.setUsername(username.getText().toString());
                 user.setPassword(password.getText().toString());
                 user.setEmail(email.getText().toString());
+
                 user.signUpInBackground(new SignUpCallback() {
                     public void done(ParseException e) {
                         if (e == null) {
