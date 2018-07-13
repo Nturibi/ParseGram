@@ -5,33 +5,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <com.parse.ParseImageView
         android:id="@+id/ivProfileImg"
-        android:layout_width="114dp"
-        android:layout_height="118dp"
+        android:layout_width="199dp"
+        android:layout_height="187dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="centerCrop"
+        android:foreground="@drawable/rounded_corners_fg"
         app:srcCompat="@color/bioTextEntityFontColor" />
+
+    <Button
+        android:id="@+id/ivNewPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="214dp"
+        android:text="Update Picture" />
 
     <TextView
         android:id="@+id/tvProfUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/ivProfileImg"
-        android:layout_marginTop="187dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginTop="25dp"
         android:text="myusername" />
 
     <Button
         android:id="@+id/btLogout"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="45dp"
+        android:text="Log out" />
+
+    <TextView
+        android:id="@+id/tvUserEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/ivProfileImg"
-        android:layout_marginTop="226dp"
-        android:text="Log out" />
+        android:layout_alignStart="@+id/tvProfUsername"
+        android:layout_marginTop="57dp"
+        android:text="my email" />
+
+    <TextView
+        android:id="@+id/tvAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tvProfUsername"
+        android:layout_below="@+id/tvUserEmail"
+        android:text="About me" />
+
+    <EditText
+        android:id="@+id/etUpdateMes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="191dp"
+        android:hint="Update display message" />
+
+    <Button
+        android:id="@+id/btUpdateMes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/etUpdateMes"
+        android:layout_marginTop="-191dp"
+        android:text="Update About" />
 
 
 </RelativeLayout>

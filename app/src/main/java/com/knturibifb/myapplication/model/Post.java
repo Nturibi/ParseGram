@@ -13,6 +13,7 @@ public class Post extends ParseObject {
     private static  final String KEY_IMAGE = "image";
     private static  final String KEY_USER = "user";
     private static  final String KEY_LIKES = "likes";
+//    private static  final String KEY_TIME = "time";
     private int numLikes = 0;
 
 
@@ -40,6 +41,7 @@ public class Post extends ParseObject {
 
     }
 
+
     public void likePost(){numLikes++; put(KEY_LIKES,numLikes);}
 
     public  String getNumLikes(){
@@ -52,7 +54,7 @@ public class Post extends ParseObject {
         }
 
         public Query getTop(){
-            setLimit(20);
+            setLimit(40);
             return this;
         }
 

@@ -2,6 +2,7 @@ package com.knturibifb.myapplication;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -19,6 +20,10 @@ import java.util.List;
 public class HomeFragment extends Fragment {
     private ArrayList<Post> posts;
     private RecyclerView rvPosts;
+    private SwipeRefreshLayout swipeContainer;
+    private PostAdapter adapter;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -33,9 +38,31 @@ public class HomeFragment extends Fragment {
         View mainView = getView();
         //get the recyclerview
          rvPosts = (RecyclerView) mainView.findViewById(R.id.rvPosts);
+         //get the swipe container
+        swipeContainer = (SwipeRefreshLayout) mainView.findViewById(R.id.swipeContainer);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                adapter.clear();
+                final Post.Query postsQuery = new Post.Query();
+                postsQuery.getTop().withUser();
+
+                postsQuery.findInBackground(new FindCallback<Post>() {
+                    @Override
+                    public void done(List<Post> objects, ParseException e) {
+                        if (e == null){
+                            adapter.addAll(objects);
+                            swipeContainer.setRefreshing(false);
+                        }else{
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+
         //update posts with the latest posts
         loadTopPosts();
-
     }
     private void loadTopPosts(){
         //get the top posts
@@ -51,7 +78,7 @@ public class HomeFragment extends Fragment {
                         posts.add(objects.get(i));
                     }
                     //create a posts adapter
-                    PostAdapter adapter = new PostAdapter(posts);
+                    adapter = new PostAdapter(posts);
                     //attach the adapter to the recyclerview to populate items
                     rvPosts.setAdapter(adapter);
                     //set the layout manager to position the items
@@ -66,6 +93,5 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
 
 }

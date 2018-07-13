@@ -8,7 +8,7 @@
 
 
     <com.parse.ParseImageView
-        android:id="@+id/ivPostPic"
+        android:id="@+id/ivDetailPic"
         android:layout_width="match_parent"
         android:layout_height="320dp"
         android:layout_alignParentTop="true"
@@ -23,7 +23,7 @@
         android:layout_width="118dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/ivPostPic"
+        android:layout_below="@+id/ivDetailPic"
         android:orientation="horizontal">
 
         <ImageView
@@ -32,7 +32,7 @@
             android:layout_height="30dp"
             android:layout_margin="5dp"
             android:layout_alignParentStart="true"
-            android:layout_below="@+id/ivPostPic"
+            android:layout_below="@+id/ivDetailPic"
             app:srcCompat="@drawable/ic_heart_outline_24dp" />
 
 
@@ -40,7 +40,7 @@
             android:id="@+id/ivComment"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_below="@+id/ivPostPic"
+            android:layout_below="@+id/ivDetailPic"
             android:layout_margin="5dp"
             android:layout_toEndOf="@+id/ivLike"
             app:srcCompat="@drawable/ufi_comment" />
@@ -49,7 +49,7 @@
             android:id="@+id/ivDirectMessage"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_below="@+id/ivPostPic"
+            android:layout_below="@+id/ivDetailPic"
 
             android:layout_margin="5dp"
             android:layout_toEndOf="@+id/ivComment"
@@ -65,7 +65,7 @@
         android:layout_height="30dp"
 
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/ivPostPic"
+        android:layout_below="@+id/ivDetailPic"
         app:srcCompat="@drawable/ic_bookmark_outline_black_24dp" />
 
     <TextView
@@ -95,6 +95,7 @@
         android:layout_height="30dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:foreground="@drawable/rounded_corners_fg"
         app:srcCompat="@drawable/ic_instagram_profile" />
 
     <TextView

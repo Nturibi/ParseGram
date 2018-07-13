@@ -113,8 +113,9 @@ public class CreatePostFragment extends Fragment {
             @Override
             public void done(ParseException e) {
                 if (e == null){
-                    Log.d("Create Post Fragment: ", "Create post success");
-
+                    Toast.makeText(getContext(), "Posted!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), HomeActivity.class);
+                    startActivity(intent);
                 }else{
                     e.printStackTrace();
                 }

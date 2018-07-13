@@ -3,7 +3,6 @@ package com.knturibifb.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +50,7 @@ public class PostAdapter extends
             super(itemView);
             numLikes = (TextView) itemView.findViewById(R.id.tvNumLikes);
             directMessage = (ImageView) itemView.findViewById(R.id.ivDirectMessage);
-            postPic = (ParseImageView) itemView.findViewById(R.id.ivPostPic);
+            postPic = (ParseImageView) itemView.findViewById(R.id.ivDetailPic);
             comment = (ImageView) itemView.findViewById(R.id.ivComment);
             description = (TextView) itemView.findViewById(R.id.tvDescription);
             like = (ImageView) itemView.findViewById(R.id.ivLike);
@@ -63,7 +62,7 @@ public class PostAdapter extends
 
         @Override
         public void onClick(View view) {
-            Log.d("TweetAdapter", "clicked post");
+
             // gets item position
             int position = getAdapterPosition();
             // make sure the position is valid, i.e. actually exists in the view
@@ -104,14 +103,25 @@ public class PostAdapter extends
         viewHolder.userName2.setText(post.getUser().getUsername());
         viewHolder.postPic.setParseFile(post.getImage());
         viewHolder.numLikes.setText(post.getNumLikes()+" likes");
+        viewHolder.userPic.setParseFile(post.getUser().getParseFile("picture"));
         //viewHolder.userPic.setParseFile(post.getUser().g);
         viewHolder.postPic.loadInBackground();
+        viewHolder.userPic.loadInBackground();
     }
 
     // Returns the total count of items in the list
     @Override
     public int getItemCount() {
         return mPosts.size();
+    }
+
+    public void clear() {
+        mPosts.clear();
+        notifyDataSetChanged();
+    }
+    public void addAll(List<Post> list) {
+        mPosts.addAll(list);
+        notifyDataSetChanged();
     }
 }
 
