@@ -14,7 +14,6 @@ public class Post extends ParseObject {
     private static  final String KEY_USER = "user";
     private static  final String KEY_LIKES = "likes";
 //    private static  final String KEY_TIME = "time";
-    private int numLikes = 0;
 
 
     public  String getDescription(){
@@ -42,10 +41,16 @@ public class Post extends ParseObject {
     }
 
 
-    public void likePost(){numLikes++; put(KEY_LIKES,numLikes);}
+    public void likePost(){
+        int numLikes = 0;
+        if (getString("likes") != null) numLikes = Integer.parseInt(getString("likes"));
+        numLikes++;
+        put(KEY_LIKES,Integer.toString(numLikes));
+    }
 
     public  String getNumLikes(){
-        return Integer.toString(numLikes);
+        if (getString("likes") == null) return "0";
+        return getString("likes");
     }
 
     public static class Query extends ParseQuery<Post>{

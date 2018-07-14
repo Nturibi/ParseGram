@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +73,6 @@ public class HomeFragment extends Fragment {
             public void done(List<Post> objects, ParseException e) {
                 if (e == null){
                     for (int i = 0; i < objects.size(); i++){
-                        Log.d("HomeFragment", "Post["+i+"] ="+objects.get(i).getDescription()+"\n username = "+objects.get(i).getUser().getUsername());
                         posts.add(objects.get(i));
                     }
                     //create a posts adapter

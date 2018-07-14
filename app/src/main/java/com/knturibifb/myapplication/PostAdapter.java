@@ -3,6 +3,7 @@ package com.knturibifb.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,7 @@ public class PostAdapter extends
 
         @Override
         public void onClick(View view) {
+            Log.d("Clicked", view.getId()+"  is the id");
 
             // gets item position
             int position = getAdapterPosition();
@@ -119,6 +121,7 @@ public class PostAdapter extends
         mPosts.clear();
         notifyDataSetChanged();
     }
+
     public void addAll(List<Post> list) {
         mPosts.addAll(list);
         notifyDataSetChanged();
