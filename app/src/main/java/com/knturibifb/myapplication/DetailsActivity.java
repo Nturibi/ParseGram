@@ -23,6 +23,7 @@ public class DetailsActivity extends AppCompatActivity {
     private ParseImageView img;
     private TextView username1;
     private ParseImageView profImg;
+    private String numberLikes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         numLikes = (TextView)findViewById(R.id.tvNumLikes);
         numLikes.setText(post.getNumLikes() +" likes");
+        numberLikes = post.getNumLikes();
 
         img = (ParseImageView) findViewById(R.id.ivDetailPic);
         img.setParseFile(post.getImage());
@@ -73,7 +75,7 @@ public class DetailsActivity extends AppCompatActivity {
         Log.d("Details: ", "Clicked like");
         post.likePost();
         post.saveInBackground();
-        int previousVal = Integer.parseInt(post.getNumLikes());
+        int previousVal = Integer.parseInt(numberLikes);
         numLikes.setText(Integer.toString(previousVal + 1) +" likes");
     }
 }
